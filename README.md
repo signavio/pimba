@@ -18,12 +18,15 @@ $ go get [-u] github.com/signavio/pimba
 To serve the Pimba API and the static files, execute:
 
 ```
-$ pimba api --storage /path/to/data/storage
+$ pimba api --storage /path/to/data/storage --secret my-jwt-secret
 ```
 
-It's also possible to set the port, passing the option `--port <port-number>`.
+The flag `--secret` is mandatory and it's the necessary key for signing
+tokens for pushing to the Pimba buckets.
 
-For further help on how to serve files, execute `pimba help api`.
+It's also possible to set the port, passing the flag `--port <port-number>`.
+
+For further help, execute `pimba help api`.
 
 ## Pushing
 
@@ -32,8 +35,21 @@ would like to publish and execute:
 
 ```
 $ cd /path/to/publish
-$ pimba push --server pimba.server.host:port
+$ pimba push --server pimba.server.host:port --name my-bucket-name
 ```
+
+If the flag `--name` is not passed, Pimba will create a bucket with a random
+string as the name.
+
+After you did the first push to your bucket, use the returned token to be able
+to update the bucket. Execute:
+
+```
+$ pimba push --server pimba.server.host:port --name my-bucket-name --token returned-token
+```
+
+Remember to save your token in a safe place, Pimba **doesn't store tokens**,
+thus meaning that if you lose the token the bucket will become inaccessible.
 
 For further help on how to push, execute `pimba help push`.
 
