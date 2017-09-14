@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: pimba
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - host: "pimba.hostname.here"
+    http:
+      paths:
+      - backend:
+          serviceName: pimba
+          servicePort: 80
+        path: /

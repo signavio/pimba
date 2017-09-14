@@ -1,0 +1,6 @@
+storage: /tmp/pimba-storage
+server: localhost:8080
+port: 8080
+secret: my-jwt-secret
+name: my-bucket-name
+token: my-bucket-token

@@ -1,0 +1,26 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: pimba
+  labels:
+    app: pimba
+spec:
+  template:
+    metadata:
+      labels:
+        app: pimba
+    spec:
+      containers:
+        - name: pimba
+          image: signavio/pimba:latest
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8080
+            name: http
+            protocol: TCP
+          env:
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: secrets
+                  key: jwt-secret
