@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/signavio/pimba/pkg/api"
 
@@ -17,6 +18,11 @@ var apiCmd = &cobra.Command{
 		port := viper.GetInt("port")
 		storagePath := viper.GetString("storage")
 		secret := viper.GetString("secret")
+
+		if secret == "" {
+			os.Stderr.WriteString("Error: Flag --secret is mandatory\n")
+			os.Exit(2)
+		}
 
 		fmt.Println("Starting the Pimba server...")
 		fmt.Printf("Serving on port %v. ˆC to stop", port)
