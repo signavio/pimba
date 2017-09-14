@@ -26,7 +26,12 @@ var pushCmd = &cobra.Command{
 		}
 		fmt.Println("Files published successfuly.")
 		fmt.Printf("Your push address: http://%v\n", pushResp[0])
-		fmt.Printf("Use the following token to push: %v\n", pushResp[1])
+		if token == "" {
+			fmt.Printf(
+				"Use the following token to push to the created bucket: %v\n",
+				pushResp[1],
+			)
+		}
 	},
 }
 
