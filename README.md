@@ -71,4 +71,4 @@ Stephano Zanzin - [@microwaves](https://github.com/microwaves)
 
 ## License
 
-Please, refer to the [LICENSE](LICENSE) file.
+Pimba is released under the MIT license. See [LICENSE](LICENSE).
