@@ -32,7 +32,7 @@ type PushResponse struct {
 
 func PushCurrentDirFiles(pimbaServerURL, bucketName, token string) ([]string, error) {
 	currentDir, _ := os.Getwd()
-	tarball, err := archivebuffer.NewTarballBuffer(currentDir)
+	tarball, err := archivebuffer.NewTarballBuffer(currentDir, false)
 	if err != nil {
 		return nil, errors.New(fmt.Sprintf(errorCreatingTarball, err))
 	}
