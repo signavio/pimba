@@ -1,4 +1,4 @@
-CURRENT_TAG := $(shell git describe --tags)
+CURRENT_TAG := $(shell git describe --tags | sed -e 's/^v//')
 ARCH := amd64
 
 release:
