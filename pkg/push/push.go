@@ -9,7 +9,6 @@ import (
 	"io/ioutil"
 	"mime/multipart"
 	"net/http"
-	"os"
 	"strings"
 
 	"vvoid.pw/archivebuffer"
@@ -30,9 +29,8 @@ type PushResponse struct {
 	Error string `json:"error"`
 }
 
-func PushCurrentDirFiles(pimbaServerURL, bucketName, token string) ([]string, error) {
-	currentDir, _ := os.Getwd()
-	tarball, err := archivebuffer.NewTarballBuffer(currentDir, false)
+func PushFiles(sourcePath, pimbaServerURL, bucketName, token string) ([]string, error) {
+	tarball, err := archivebuffer.NewTarballBuffer(sourcePath, false)
 	if err != nil {
 		return nil, errors.New(fmt.Sprintf(errorCreatingTarball, err))
 	}

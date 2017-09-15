@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"fmt"
+	"os"
 
 	"github.com/signavio/pimba/pkg/push"
 
@@ -19,7 +20,12 @@ var pushCmd = &cobra.Command{
 		token := viper.GetString("token")
 
 		fmt.Printf("Pushing files to the Pimba server %v...\n", serverURL)
-		pushResp, err := push.PushCurrentDirFiles(serverURL, bucketName, token)
+		currentDir, err := os.Getwd()
+		if err != nil {
+			os.Stderr.WriteString("Error: Couldn't find current directory.")
+			os.Exit(1)
+		}
+		pushResp, err := push.PushFiles(currentDir, serverURL, bucketName, token)
 		if err != nil {
 			fmt.Println("Error:", err)
 			return
