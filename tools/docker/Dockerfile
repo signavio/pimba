@@ -1,7 +1,12 @@
-FROM golang:1.9
+FROM golang:1.9 as builder
 
-ADD . /go/src/github.com/signavio/pimba
-RUN cd /go/src/github.com/signavio/pimba && go get && go install
-ENTRYPOINT ["/go/bin/pimba"]
+WORKDIR /go/src/github.com/signavio/pimba
+ADD . .
+RUN go get && go install
+
+FROM scratch
+COPY --from=builder /go/bin/pimba .
+
+ENTRYPOINT ["/pimba"]
 EXPOSE 8080
 CMD ["api", "--storage", "/var/www", "--secret", "$JWT_SECRET"]
