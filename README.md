@@ -2,6 +2,8 @@
 
 Pimba is a small and simple CLI tool to easily publish and serve static files.
 
+[![Build Status](https://travis-ci.org/signavio/pimba.svg?branch=master)](https://travis-ci.org/signavio/pimba)
+
 ## Install
 
 [Binary releases](https://github.com/signavio/pimba/releases/) are available.
