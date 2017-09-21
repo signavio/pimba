@@ -17,6 +17,8 @@ $ go get [-u] github.com/signavio/pimba
 
 ## Serving
 
+![pimba api](https://i.imgur.com/RCJkrV3.gif)
+
 To serve the Pimba API and the static files, execute:
 
 ```
@@ -31,6 +33,8 @@ It's also possible to set the port, passing the flag `--port <port-number>`.
 For further help, execute `pimba help api`.
 
 ## Pushing
+
+![pimba push](https://i.imgur.com/4VW6d6Y.gif)
 
 To push files to the Pimba server, first enter the directory that you
 would like to publish and execute:
