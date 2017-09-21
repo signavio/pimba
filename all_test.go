@@ -1,4 +1,4 @@
-package pkgtest
+package main
 
 import (
 	"fmt"
