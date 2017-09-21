@@ -69,6 +69,8 @@ $ vim $HOME/.pimba.yaml #edit as you like
 
 Stephano Zanzin - [@microwaves](https://github.com/microwaves)
 
+Thanks to [@jbreckel](https://github.com/jbreckel) and [@m1schka](https://github.com/m1schka) for the very lean docker image. :unicorn:
+
 ## License
 
 Pimba is released under the MIT license. See [LICENSE](LICENSE).
