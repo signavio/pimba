@@ -1,11 +1,6 @@
-FROM golang:1.9 as builder
-
-WORKDIR /go/src/github.com/signavio/pimba
-ADD . .
-RUN go get && go install
-
+# Use 'make image' to build
 FROM scratch
-COPY --from=builder /go/bin/pimba .
+COPY releases/pimba-static /pimba
 
 ENTRYPOINT ["/pimba"]
 EXPOSE 8080
