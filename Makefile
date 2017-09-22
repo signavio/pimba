@@ -7,12 +7,9 @@ release:
 	GOOS=darwin GOARCH=$(ARCH) go build -o releases/pimba-$(CURRENT_TAG)-darwin-amd64 main.go
 	GOOS=windows GOARCH=$(ARCH) go build -o releases/pimba-$(CURRENT_TAG)-windows-amd64.exe main.go
 
-image: static
+image:
 	docker build . -f tools/docker/Dockerfile -t signavio/pimba:$(CURRENT_TAG)
 	docker build . -f tools/docker/Dockerfile -t signavio/pimba:latest
-
-static:
-	GOOS=linux GOARCH=$(ARCH) go build -o releases/pimba-static --ldflags '-extldflags "-static"' main.go
 
 version:
 	@echo $(CURRENT_TAG)

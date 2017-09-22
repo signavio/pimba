@@ -1,6 +1,11 @@
-# Use 'make image' to build
+FROM golang:1.9 as builder
+
+WORKDIR /go/src/github.com/signavio/pimba
+ADD . .
+RUN go get && CGO_ENABLED=0 go build -o /pimba -a -tags netgo -ldflags '-w' main.go
+
 FROM scratch
-COPY releases/pimba-static /pimba
+COPY --from=builder /pimba /pimba
 
 ENTRYPOINT ["/pimba"]
 EXPOSE 8080
