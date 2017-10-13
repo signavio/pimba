@@ -10,6 +10,8 @@ release:
 image:
 	docker build . -f tools/docker/Dockerfile -t signavio/pimba:$(CURRENT_TAG)
 	docker build . -f tools/docker/Dockerfile -t signavio/pimba:latest
+	docker build . -f tools/docker/Dockerfile-alpine -t signavio/pimba:alpine
+	docker build . -f tools/docker/Dockerfile-alpine -t signavio/pimba:$(CURRENT_TAG)-alpine
 
 version:
 	@echo $(CURRENT_TAG)
